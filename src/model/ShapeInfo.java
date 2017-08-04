@@ -39,7 +39,7 @@ public class ShapeInfo {
 	/**
 	 * @return the width
 	 */
-	public Number getWidth() {
+	public double getWidth() {
 		return width;
 	}
 
@@ -54,7 +54,7 @@ public class ShapeInfo {
 	/**
 	 * @return the height
 	 */
-	public Number getHeight() {
+	public double getHeight() {
 		return height;
 	}
 

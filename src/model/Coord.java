@@ -2,14 +2,14 @@ package model;
 
 public class Coord {
 
-	private Number x, y;
+	private double x, y;
 	
 	/**
 	 * Creates a 2D coordinate
 	 * @param x The x value 
 	 * @param y The y value
 	 */
-	public Coord(Number x, Number y) {
+	public Coord(double x, double y) {
 		this.setX(x);
 		this.setY(y);
 	}
@@ -17,7 +17,7 @@ public class Coord {
 	/**
 	 * @return the x
 	 */
-	public Number getX() {
+	public double getX() {
 		return x;
 	}
 
@@ -25,21 +25,21 @@ public class Coord {
 	/**
 	 * @param x the x to set
 	 */
-	public void setX(Number x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 	
 	/**
 	 * @return the y
 	 */
-	public Number getY() {
+	public double getY() {
 		return y;
 	}
 
 	/**
 	 * @param y the y to set
 	 */
-	public void setY(Number y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 	
