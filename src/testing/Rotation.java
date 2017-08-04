@@ -44,9 +44,25 @@ public class Rotation extends JPanel {
 		tran.rotate(angle, 300, 300);
 		g2.setTransform(tran);
 		
+		
 		Ellipse2D.Double circ2 = new Ellipse2D.Double(400-r, 400-r, 2*r, 2*r);
 		g2.setColor(Color.RED);
 		g2.fill(circ2);
+		
+		AffineTransform tran2 = new AffineTransform();
+		g2.setTransform(tran2);
+		
+		Ellipse2D.Double circ3 = new Ellipse2D.Double(200-r, 400-r, 2*r, 2*r);
+		g2.setColor(Color.BLUE);
+		g2.fill(circ3);
+
+		tran2.translate(200, 0);
+		g2.setTransform(tran2);
+		
+		
+		Ellipse2D.Double circ4 = new Ellipse2D.Double(200-r, 400-r, 2*r, 2*r);
+		g2.setColor(Color.GREEN);
+		g2.fill(circ4);
 		
 	}
 
