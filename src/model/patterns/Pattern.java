@@ -11,5 +11,11 @@ public interface Pattern {
 	 * @return The pattern in the form of a list of ShapeInfo's
 	 */
 	ArrayList<ShapeInfo> getPattern();
+	
+	/**
+	 * 
+	 * @return The pattern type associated with the pattern
+	 */
+	PatternType getPatternType();
 	 
 }

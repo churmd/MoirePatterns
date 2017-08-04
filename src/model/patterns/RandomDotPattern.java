@@ -31,4 +31,9 @@ public class RandomDotPattern implements Pattern {
 		return dots;
 	}
 
+	@Override
+	public PatternType getPatternType() {
+		return PatternType.RandomDots;
+	}
+
 }
