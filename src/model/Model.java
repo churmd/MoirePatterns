@@ -7,7 +7,7 @@ import model.patterns.Pattern;
 import model.patterns.PatternType;
 import model.patterns.RandomDotPattern;
 
-public class Model extends Observable{
+public class Model extends Observable {
 
 	private Pattern pattern;
 	private int patternSize;
@@ -23,7 +23,9 @@ public class Model extends Observable{
 
 	/**
 	 * Changes the current pattern
-	 * @param pt The new pattern to be used
+	 * 
+	 * @param pt
+	 *            The new pattern to be used
 	 */
 	public void setPattern(PatternType pt) {
 		switch (pt) {
@@ -37,6 +39,14 @@ public class Model extends Observable{
 	}
 
 	/**
+	 * 
+	 * @return The current pattern type
+	 */
+	public PatternType getPatternType() {
+		return pattern.getPatternType();
+	}
+
+	/**
 	 * Sets the size of the pattern
 	 * 
 	 * @param size
@@ -47,12 +57,13 @@ public class Model extends Observable{
 			patternSize = size;
 		}
 	}
-	
+
 	/**
-	 * The description of the pattern 
+	 * The description of the pattern
+	 * 
 	 * @return The pattern in the form of a list of ShapeInfo's
 	 */
-	public ArrayList<ShapeInfo> getPattern(){
+	public ArrayList<ShapeInfo> getPattern() {
 		return pattern.getPattern();
 	}
 
@@ -64,9 +75,11 @@ public class Model extends Observable{
 	}
 
 	/**
-	 * @param angle the angle to set
+	 * @param angle
+	 *            the angle to set
 	 */
 	public void setAngle(double angle) {
+		angle = angle % (2 * Math.PI);
 		this.angle = angle;
 	}
 
@@ -78,10 +91,13 @@ public class Model extends Observable{
 	}
 
 	/**
-	 * @param xOffset the xOffset to set
+	 * @param xOffset
+	 *            the xOffset to set
 	 */
 	public void setxOffset(double xOffset) {
-		this.xOffset = xOffset;
+		if (xOffset >= 0 && xOffset <= 1) {
+			this.xOffset = xOffset;
+		}
 	}
 
 	/**
@@ -92,9 +108,12 @@ public class Model extends Observable{
 	}
 
 	/**
-	 * @param yOffset the yOffset to set
+	 * @param yOffset
+	 *            the yOffset to set
 	 */
 	public void setyOffset(double yOffset) {
-		this.yOffset = yOffset;
+		if (yOffset >= 0 && yOffset <= 1) {
+			this.yOffset = yOffset;
+		}
 	}
 }
