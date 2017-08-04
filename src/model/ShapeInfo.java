@@ -12,7 +12,7 @@ public class ShapeInfo {
 	 * @param type The type of shape to draw
 	 * @param width The width of the shape (scaled between 0-1)
 	 * @param Height The height of the shape (scaled between 0-1)
-	 * @param coord The coordinates of the shape (scaled between 0-1)
+	 * @param coord The coordinates of the centre of the shape (scaled between 0-1)
 	 */
 	public ShapeInfo(ShapeType type, double width, double Height, Coord coord) {
 		setType(type);

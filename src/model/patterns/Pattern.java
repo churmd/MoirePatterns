@@ -1,10 +1,11 @@
 package model.patterns;
 
-import java.awt.Shape;
 import java.util.ArrayList;
+
+import model.ShapeInfo;
 
 public interface Pattern {
 	
-	ArrayList<Shape> getPattern();
-	
+	ArrayList<ShapeInfo> getPattern();
+	 
 }
