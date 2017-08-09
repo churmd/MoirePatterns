@@ -1,10 +1,13 @@
 package model;
 
+import java.awt.Color;
+
 public class ShapeInfo {
 
 	private ShapeType type;
 	private double width, height;
 	private Coord coord;
+	private Color outline, fill;
 
 	/**
 	 * Stores generic information used to draw any shape
@@ -14,11 +17,13 @@ public class ShapeInfo {
 	 * @param Height The height of the shape (scaled between 0-1)
 	 * @param coord The coordinates of the centre of the shape (scaled between 0-1)
 	 */
-	public ShapeInfo(ShapeType type, double width, double Height, Coord coord) {
+	public ShapeInfo(ShapeType type, double width, double Height, Coord coord, Color outline, Color fill) {
 		setType(type);
 		setWidth(width);
 		setHeight(Height);
 		setCoord(coord);
+		setOutline(outline);
+		setFill(fill);
 	}
 
 	/**
@@ -79,5 +84,33 @@ public class ShapeInfo {
 	 */
 	public void setCoord(Coord coord) {
 		this.coord = coord;
+	}
+
+	/**
+	 * @return the outline
+	 */
+	public Color getOutline() {
+		return outline;
+	}
+
+	/**
+	 * @param outline the outline to set
+	 */
+	public void setOutline(Color outline) {
+		this.outline = outline;
+	}
+
+	/**
+	 * @return the fill
+	 */
+	public Color getFill() {
+		return fill;
+	}
+
+	/**
+	 * @param fill the fill to set
+	 */
+	public void setFill(Color fill) {
+		this.fill = fill;
 	}
 }

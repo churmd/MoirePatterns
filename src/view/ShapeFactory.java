@@ -11,11 +11,12 @@ public class ShapeFactory {
 	public ShapeFactory() {
 	}
 	
-	public Shape getShape(ShapeInfo sInfo) {
+	public Shape getShape(ShapeInfo sInfo, double width, double height, 
+							double xOffset, double yOffset) {
 		Shape shape = new Rectangle(0, 0, 0, 0);
 		switch (sInfo.getType()) {
 		case Ellipse:
-			shape = makeEllipse(sInfo);
+			shape = makeEllipse(sInfo, width, height, xOffset, yOffset);
 			break; 
 			
 		default:
@@ -24,11 +25,12 @@ public class ShapeFactory {
 		return shape;
 	}
 	
-	private Ellipse2D.Double makeEllipse(ShapeInfo sInfo){
-		double xr = sInfo.getWidth() / 2.0;
-		double yr = sInfo.getHeight() / 2.0;
-		double x = sInfo.getCoord().getX() - xr;
-		double y = sInfo.getCoord().getY() - yr;
-		return new Ellipse2D.Double(x, y, sInfo.getWidth(), sInfo.getHeight());
+	private Ellipse2D.Double makeEllipse(ShapeInfo sInfo, double width, double height, 
+										double xOffset, double yOffset){
+		double xr = (sInfo.getWidth() * width) / 2.0;
+		double yr = (sInfo.getHeight() * height) / 2.0;
+		double x = ((sInfo.getCoord().getX() * width) + xOffset) - xr;
+		double y = ((sInfo.getCoord().getY() * height) + yOffset) - yr;
+		return new Ellipse2D.Double(x, y, sInfo.getWidth() * width, sInfo.getHeight() * height);
 	}
 }
