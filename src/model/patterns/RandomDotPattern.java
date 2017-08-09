@@ -11,11 +11,13 @@ import model.ShapeType;
 public class RandomDotPattern implements Pattern {
 
 	private ArrayList<ShapeInfo> dots;
-	private double width, height = 0.05;
+	private double width, height;
 	private Color outline, fill;
 
 	public RandomDotPattern(int numDots) {
 		dots = new ArrayList<>(numDots);
+		width = 0.01;
+		height = 0.01;
 		outline = Color.BLACK;
 		fill = Color.BLACK;
 

@@ -3,13 +3,15 @@ package view;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JPanel;
 
 import model.Model;
 import model.ShapeInfo;
 
-public class PatternView extends JPanel {
+public class PatternView extends JPanel implements Observer{
 
 	private Model model;
 	private ShapeFactory shapeFact;
@@ -28,8 +30,8 @@ public class PatternView extends JPanel {
 		int totalW = getWidth();
 		int totalH = getHeight();
 		double scale = 0.9;
-		double width = totalW / scale;
-		double height = totalH / scale;
+		double width = totalW * scale;
+		double height = totalH * scale;
 		double xOffset = ((1 - scale) * totalW) / 2.0;
 		double yOffset = ((1 - scale) * totalH) / 2.0;
 
@@ -49,9 +51,9 @@ public class PatternView extends JPanel {
 		}
 	}
 
+
 	@Override
-	public void update(Graphics g) {
-		super.update(g);
+	public void update(Observable o, Object arg) {
 		repaint();
 	}
 }
