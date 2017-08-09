@@ -3,6 +3,7 @@ package view;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.geom.AffineTransform;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -36,8 +37,15 @@ public class PatternView extends JPanel implements Observer{
 		double yOffset = ((1 - scale) * totalH) / 2.0;
 
 		Graphics2D g2 = (Graphics2D) g;
+		AffineTransform tranDefault = new AffineTransform();
+		g2.setTransform(tranDefault);
+		
 		drawPattern(g2, width, height, xOffset, yOffset);
-
+		
+		AffineTransform tranAltered = getTransform();
+		g2.setTransform(tranAltered);
+		
+		drawPattern(g2, width, height, xOffset, yOffset);
 	}
 
 	private void drawPattern(Graphics2D g2, double width, double height, 
@@ -51,6 +59,12 @@ public class PatternView extends JPanel implements Observer{
 		}
 	}
 
+	private AffineTransform getTransform() {
+		AffineTransform tran = new AffineTransform();
+		tran.rotate(model.getAngle(), getWidth() / 2.0, getHeight() / 2.0);
+		tran.translate(model.getxOffset(), model.getyOffset());
+		return tran;
+	}
 
 	@Override
 	public void update(Observable o, Object arg) {
