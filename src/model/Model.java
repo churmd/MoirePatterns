@@ -36,6 +36,8 @@ public class Model extends Observable {
 		default:
 			break;
 		}
+		setChanged();
+		notifyObservers();
 	}
 
 	/**
@@ -56,6 +58,8 @@ public class Model extends Observable {
 		if (size > 0) {
 			patternSize = size;
 		}
+		setChanged();
+		notifyObservers();
 	}
 
 	/**
@@ -81,6 +85,8 @@ public class Model extends Observable {
 	public void setAngle(double angle) {
 		angle = angle % (2 * Math.PI);
 		this.angle = angle;
+		setChanged();
+		notifyObservers();
 	}
 
 	/**
@@ -98,6 +104,8 @@ public class Model extends Observable {
 		if (xOffset >= 0 && xOffset <= 1) {
 			this.xOffset = xOffset;
 		}
+		setChanged();
+		notifyObservers();
 	}
 
 	/**
@@ -115,5 +123,7 @@ public class Model extends Observable {
 		if (yOffset >= 0 && yOffset <= 1) {
 			this.yOffset = yOffset;
 		}
+		setChanged();
+		notifyObservers();
 	}
 }
