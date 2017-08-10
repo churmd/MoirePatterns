@@ -14,7 +14,8 @@ public class RandomDotPattern implements Pattern {
 	private double width, height;
 	private Color outline, fill;
 
-	public RandomDotPattern(int numDots) {
+	public RandomDotPattern() {
+		int numDots = 2000;
 		dots = new ArrayList<>(numDots);
 		width = 0.005;
 		height = 0.005;

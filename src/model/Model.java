@@ -10,12 +10,10 @@ import model.patterns.RandomDotPattern;
 public class Model extends Observable {
 
 	private Pattern pattern;
-	private int patternSize;
 	private double angle, xOffset, yOffset;
 
 	public Model() {
-		patternSize = 2000;
-		pattern = new RandomDotPattern(patternSize);
+		pattern = new RandomDotPattern();
 		setAngle(0);
 		setxOffset(0);
 		setyOffset(0);
@@ -30,7 +28,7 @@ public class Model extends Observable {
 	public void setPattern(PatternType pt) {
 		switch (pt) {
 		case RandomDots:
-			pattern = new RandomDotPattern(patternSize);
+			pattern = new RandomDotPattern();
 			break;
 
 		default:
@@ -46,20 +44,6 @@ public class Model extends Observable {
 	 */
 	public PatternType getPatternType() {
 		return pattern.getPatternType();
-	}
-
-	/**
-	 * Sets the size of the pattern
-	 * 
-	 * @param size
-	 *            The new size for the pattern (must be 1 or larger)
-	 */
-	public void setPatternSize(int size) {
-		if (size > 0) {
-			patternSize = size;
-		}
-		setChanged();
-		notifyObservers();
 	}
 
 	/**
