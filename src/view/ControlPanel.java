@@ -24,11 +24,13 @@ public class ControlPanel extends JPanel {
 		patterns = makeComboBox();
 		xOffset = makeXOffset();
 		yOffset = makeYOffset();
+		angle = makeAngle();
 		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(patterns);
 		add(xOffset);
 		add(yOffset);
+		add(angle);
 	}
 
 	private JComboBox<PatternType> makeComboBox() {
@@ -40,7 +42,7 @@ public class ControlPanel extends JPanel {
 
 	private JSlider makeXOffset() {
 		JSlider slider = new JSlider(-100, 100, (int) (model.getxOffset() * 100));
-		slider.setMajorTickSpacing(10);
+		slider.setMajorTickSpacing(20);
 		slider.setPaintTicks(true);
 		slider.addChangeListener(e -> {
 			double xo = slider.getValue() / 100.0;
@@ -51,11 +53,22 @@ public class ControlPanel extends JPanel {
 	
 	private JSlider makeYOffset() {
 		JSlider slider = new JSlider(-100, 100, (int) (model.getyOffset() * 100));
-		slider.setMajorTickSpacing(10);
+		slider.setMajorTickSpacing(20);
 		slider.setPaintTicks(true);
 		slider.addChangeListener(e -> {
 			double yo = slider.getValue() / 100.0;
 			con.setYOffset(yo);
+		});
+		return slider;
+	}
+	
+	private JSlider makeAngle() {
+		JSlider slider = new JSlider(0, (int) (2 * Math.PI * 100), (int)(model.getAngle()));
+		slider.setMajorTickSpacing((int) ((2 * Math.PI * 100) / 10.0));
+		slider.setPaintTicks(true);
+		slider.addChangeListener(e -> {
+			double angle = slider.getValue() / 100.0;
+			con.setAngle(angle);
 		});
 		return slider;
 	}
