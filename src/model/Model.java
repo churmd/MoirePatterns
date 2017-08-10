@@ -101,7 +101,7 @@ public class Model extends Observable {
 	 *            the xOffset to set
 	 */
 	public void setxOffset(double xOffset) {
-		if (xOffset >= 0 && xOffset <= 1) {
+		if (xOffset >= -1 && xOffset <= 1) {
 			this.xOffset = xOffset;
 		}
 		setChanged();
@@ -120,7 +120,7 @@ public class Model extends Observable {
 	 *            the yOffset to set
 	 */
 	public void setyOffset(double yOffset) {
-		if (yOffset >= 0 && yOffset <= 1) {
+		if (yOffset >= -1 && yOffset <= 1) {
 			this.yOffset = yOffset;
 		}
 		setChanged();
