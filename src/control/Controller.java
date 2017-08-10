@@ -24,16 +24,6 @@ public class Controller {
 		}
 	}
 	
-	/**
-	 * Sets the size of the pattern
-	 * 
-	 * @param size
-	 *            The new size for the pattern (must be 1 or larger)
-	 */
-	public void setPatternSize(int size) {
-		model.setPatternSize(size);
-	}
-	
 	public void setAngle(double angle) {
 		model.setAngle(angle);
 	}
