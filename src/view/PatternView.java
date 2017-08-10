@@ -42,7 +42,7 @@ public class PatternView extends JPanel implements Observer{
 		
 		drawPattern(g2, width, height, xOffset, yOffset);
 		
-		AffineTransform tranAltered = getTransform();
+		AffineTransform tranAltered = getTransform(width, height);
 		g2.setTransform(tranAltered);
 		
 		drawPattern(g2, width, height, xOffset, yOffset);
@@ -59,10 +59,10 @@ public class PatternView extends JPanel implements Observer{
 		}
 	}
 
-	private AffineTransform getTransform() {
+	private AffineTransform getTransform(double width, double height) {
 		AffineTransform tran = new AffineTransform();
 		tran.rotate(model.getAngle(), getWidth() / 2.0, getHeight() / 2.0);
-		tran.translate(model.getxOffset(), model.getyOffset());
+		tran.translate(model.getxOffset() * width, model.getyOffset() * height);
 		return tran;
 	}
 
