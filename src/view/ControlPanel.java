@@ -1,5 +1,8 @@
 package view;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -9,7 +12,7 @@ import control.Controller;
 import model.Model;
 import model.patterns.PatternType;
 
-public class ControlPanel extends JPanel {
+public class ControlPanel extends JPanel implements Observer{
 
 	private Controller con;
 	private JComboBox<PatternType> patterns;
@@ -71,5 +74,13 @@ public class ControlPanel extends JPanel {
 			con.setAngle(Math.toRadians(angle));
 		});
 		return slider;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		patterns.setSelectedItem(model.getPatternType());
+		xOffset.setValue((int) (model.getxOffset() * 100));
+		yOffset.setValue((int) (model.getyOffset() * 100));
+		angle.setValue((int) Math.toDegrees(model.getAngle())); 
 	}
 }

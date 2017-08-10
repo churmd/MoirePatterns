@@ -16,6 +16,7 @@ public class Main {
 		ControlPanel cp = new ControlPanel(model, con);
 		
 		model.addObserver(view);
+		model.addObserver(cp);
 		
 		JFrame frame = new JFrame("Moire Patterns");
 		frame.setSize(600, 600);
