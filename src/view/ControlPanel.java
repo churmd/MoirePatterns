@@ -41,8 +41,8 @@ public class ControlPanel extends JPanel {
 	}
 
 	private JSlider makeXOffset() {
-		JSlider slider = new JSlider(-100, 100, (int) (model.getxOffset() * 100));
-		slider.setMajorTickSpacing(20);
+		JSlider slider = new JSlider(-10, 10, (int) (model.getxOffset() * 100));
+		slider.setMajorTickSpacing(2);
 		slider.setPaintTicks(true);
 		slider.addChangeListener(e -> {
 			double xo = slider.getValue() / 100.0;
@@ -52,8 +52,8 @@ public class ControlPanel extends JPanel {
 	}
 	
 	private JSlider makeYOffset() {
-		JSlider slider = new JSlider(-100, 100, (int) (model.getyOffset() * 100));
-		slider.setMajorTickSpacing(20);
+		JSlider slider = new JSlider(-10, 10, (int) (model.getyOffset() * 100));
+		slider.setMajorTickSpacing(2);
 		slider.setPaintTicks(true);
 		slider.addChangeListener(e -> {
 			double yo = slider.getValue() / 100.0;
@@ -63,12 +63,12 @@ public class ControlPanel extends JPanel {
 	}
 	
 	private JSlider makeAngle() {
-		JSlider slider = new JSlider(0, (int) (2 * Math.PI * 100), (int)(model.getAngle()));
-		slider.setMajorTickSpacing((int) ((2 * Math.PI * 100) / 10.0));
+		JSlider slider = new JSlider(-180, 180, (int) Math.toDegrees(model.getAngle()));
+		slider.setMajorTickSpacing(36);
 		slider.setPaintTicks(true);
 		slider.addChangeListener(e -> {
-			double angle = slider.getValue() / 100.0;
-			con.setAngle(angle);
+			double angle = slider.getValue();
+			con.setAngle(Math.toRadians(angle));
 		});
 		return slider;
 	}

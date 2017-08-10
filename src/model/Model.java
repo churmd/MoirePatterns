@@ -14,7 +14,7 @@ public class Model extends Observable {
 	private double angle, xOffset, yOffset;
 
 	public Model() {
-		patternSize = 200;
+		patternSize = 2000;
 		pattern = new RandomDotPattern(patternSize);
 		setAngle(0);
 		setxOffset(0);
