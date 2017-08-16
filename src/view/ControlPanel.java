@@ -1,10 +1,13 @@
 package view;
 
+import java.awt.Dimension;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
@@ -29,15 +32,47 @@ public class ControlPanel extends JPanel implements Observer{
 		yOffset = makeYOffset();
 		angle = makeAngle();
 		
+		JLabel patternLabel = new JLabel("Pattern");
+		JLabel xAxisLabel = new JLabel("X-Axis");
+		JLabel yAxisLabel = new JLabel("Y-Axis");
+		JLabel angleLabel = new JLabel("Angle");
+		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		add(Box.createVerticalGlue());
+		
+		add(patternLabel);
+		patternLabel.setAlignmentX(CENTER_ALIGNMENT);
 		add(patterns);
+		patterns.setAlignmentX(CENTER_ALIGNMENT);
+		
+		add(Box.createVerticalGlue());
+		
+		add(xAxisLabel);
+		xAxisLabel.setAlignmentX(CENTER_ALIGNMENT);
 		add(xOffset);
+		xOffset.setAlignmentX(CENTER_ALIGNMENT);
+		
+		add(Box.createVerticalGlue());
+		
+		add(yAxisLabel);
+		yAxisLabel.setAlignmentX(CENTER_ALIGNMENT);
 		add(yOffset);
+		yOffset.setAlignmentX(CENTER_ALIGNMENT);
+		
+		add(Box.createVerticalGlue());
+		
+		add(angleLabel);
+		angleLabel.setAlignmentX(CENTER_ALIGNMENT);
 		add(angle);
+		angle.setAlignmentX(CENTER_ALIGNMENT);
+		
+		add(Box.createVerticalGlue());
 	}
 
 	private JComboBox<PatternType> makeComboBox() {
 		JComboBox<PatternType> cb = new JComboBox<>(PatternType.values());
+		cb.setMaximumSize(new Dimension(Short.MAX_VALUE, 50));
 		cb.setSelectedIndex(0);
 		cb.addActionListener(e -> con.changePattern((PatternType) cb.getSelectedItem()));
 		return cb;
