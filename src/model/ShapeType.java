@@ -2,5 +2,5 @@ package model;
 
 public enum ShapeType {
 
-	Ellipse;
+	Ellipse, Rectangle;
 }

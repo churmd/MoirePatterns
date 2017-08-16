@@ -6,6 +6,7 @@ import java.util.Observable;
 import model.patterns.Pattern;
 import model.patterns.PatternType;
 import model.patterns.RandomDotPattern;
+import model.patterns.SquaresPattern;
 
 public class Model extends Observable {
 
@@ -30,10 +31,17 @@ public class Model extends Observable {
 		case RandomDots:
 			pattern = new RandomDotPattern();
 			break;
-
+		case Squares:
+			pattern = new SquaresPattern();
+			break;
 		default:
 			break;
 		}
+		
+		setxOffset(0);
+		setyOffset(0);
+		setAngle(0);
+		
 		setChanged();
 		notifyObservers();
 	}

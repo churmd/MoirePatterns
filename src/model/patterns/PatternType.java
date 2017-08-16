@@ -2,7 +2,7 @@ package model.patterns;
 
 public enum PatternType {
 
-	RandomDots("Random Dots");
+	RandomDots("Random Dots"), Squares("Squares");
 	
 	private String name;
 	
