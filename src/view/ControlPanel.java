@@ -21,11 +21,13 @@ public class ControlPanel extends JPanel implements Observer{
 	private JComboBox<PatternType> patterns;
 	private JSlider angle, xOffset, yOffset;
 	private Model model;
+	private double multiplier;
 
 	public ControlPanel(Model model, Controller controller) {
 		super();
 		this.con = controller;
 		this.model = model;
+		multiplier = 1000;
 		
 		patterns = makeComboBox();
 		xOffset = makeXOffset();
@@ -79,22 +81,22 @@ public class ControlPanel extends JPanel implements Observer{
 	}
 
 	private JSlider makeXOffset() {
-		JSlider slider = new JSlider(-10, 10, (int) (model.getxOffset() * 100));
-		slider.setMajorTickSpacing(2);
+		JSlider slider = new JSlider(-100, 100, (int) (model.getxOffset() * multiplier));
+		slider.setMajorTickSpacing(20);
 		slider.setPaintTicks(true);
 		slider.addChangeListener(e -> {
-			double xo = slider.getValue() / 100.0;
+			double xo = slider.getValue() / multiplier;
 			con.setXOffset(xo);
 		});
 		return slider;
 	}
 	
 	private JSlider makeYOffset() {
-		JSlider slider = new JSlider(-10, 10, (int) (model.getyOffset() * 100));
-		slider.setMajorTickSpacing(2);
+		JSlider slider = new JSlider(-100, 100, (int) (model.getyOffset() * multiplier));
+		slider.setMajorTickSpacing(20);
 		slider.setPaintTicks(true);
 		slider.addChangeListener(e -> {
-			double yo = slider.getValue() / 100.0;
+			double yo = slider.getValue() / multiplier;
 			con.setYOffset(yo);
 		});
 		return slider;
@@ -114,8 +116,8 @@ public class ControlPanel extends JPanel implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		patterns.setSelectedItem(model.getPatternType());
-		xOffset.setValue((int) (model.getxOffset() * 100));
-		yOffset.setValue((int) (model.getyOffset() * 100));
+		xOffset.setValue((int) (model.getxOffset() * multiplier));
+		yOffset.setValue((int) (model.getyOffset() * multiplier));
 		angle.setValue((int) Math.toDegrees(model.getAngle())); 
 	}
 }
