@@ -3,6 +3,7 @@ package view;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
 import model.ShapeInfo;
@@ -20,6 +21,9 @@ public class ShapeFactory {
 			break;
 		case Rectangle:
 			shape = makeRectangle(sInfo, width, height, xOffset, yOffset);
+			break;
+		case Line:
+			shape = makeLine(sInfo, width, height, xOffset, yOffset);
 			break;
 		default:
 			break;
@@ -41,5 +45,12 @@ public class ShapeFactory {
 		double x = ((sInfo.getCoord().getX() * width) + xOffset) - xr;
 		double y = ((sInfo.getCoord().getY() * height) + yOffset) - yr;
 		return new Ellipse2D.Double(x, y, sInfo.getWidth() * width, sInfo.getHeight() * height);
+	}
+	
+	private Shape makeLine(ShapeInfo sInfo, double width, double height, double xOffset, double yOffset) {
+		double x = (sInfo.getCoord().getX() * width) + xOffset;
+		double y1 = (sInfo.getCoord().getY() * height) + yOffset;
+		double y2 = (1 * height) + yOffset;
+		return new Line2D.Double(x, y1, x, y2);
 	}
 }

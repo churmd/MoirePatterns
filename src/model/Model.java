@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import model.patterns.LinesPattern;
 import model.patterns.Pattern;
 import model.patterns.PatternType;
 import model.patterns.RandomDotPattern;
@@ -33,6 +34,9 @@ public class Model extends Observable {
 			break;
 		case Squares:
 			pattern = new SquaresPattern();
+			break;
+		case Lines:
+			pattern = new LinesPattern();
 			break;
 		default:
 			break;
