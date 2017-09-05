@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import model.patterns.ConcentricCirclesPattern;
 import model.patterns.LinesPattern;
 import model.patterns.Pattern;
 import model.patterns.PatternType;
@@ -37,6 +38,9 @@ public class Model extends Observable {
 			break;
 		case Lines:
 			pattern = new LinesPattern();
+			break;
+		case ConcentricCircles:
+			pattern = new ConcentricCirclesPattern();
 			break;
 		default:
 			break;

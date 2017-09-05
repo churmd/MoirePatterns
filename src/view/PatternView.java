@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import model.Model;
 import model.ShapeInfo;
 
-public class PatternView extends JPanel implements Observer{
+public class PatternView extends JPanel implements Observer {
 
 	private Model model;
 	private ShapeFactory shapeFact;
@@ -39,21 +39,23 @@ public class PatternView extends JPanel implements Observer{
 		Graphics2D g2 = (Graphics2D) g;
 		AffineTransform tranDefault = new AffineTransform();
 		g2.setTransform(tranDefault);
-		
+
 		drawPattern(g2, width, height, xOffset, yOffset);
-		
+
 		AffineTransform tranAltered = getTransform(width, height);
 		g2.setTransform(tranAltered);
-		
+
 		drawPattern(g2, width, height, xOffset, yOffset);
 	}
 
-	private void drawPattern(Graphics2D g2, double width, double height, 
-								double xOffset, double yOffset) {
-		for(ShapeInfo sInfo : model.getPattern()) {
+	private void drawPattern(Graphics2D g2, double width, double height, double xOffset, double yOffset) {
+		for (ShapeInfo sInfo : model.getPattern()) {
 			Shape s = shapeFact.getShape(sInfo, width, height, xOffset, yOffset);
-			g2.setColor(sInfo.getFill());
-			g2.fill(s);
+
+			if (sInfo.isShapeFilled()) {
+				g2.setColor(sInfo.getFill());
+				g2.fill(s);
+			}
 			g2.setColor(sInfo.getOutline());
 			g2.draw(s);
 		}

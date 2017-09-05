@@ -8,6 +8,7 @@ public class ShapeInfo {
 	private double width, height;
 	private Coord coord;
 	private Color outline, fill;
+	private boolean fillShape;
 
 	/**
 	 * Stores generic information used to draw any shape
@@ -24,6 +25,17 @@ public class ShapeInfo {
 		setCoord(coord);
 		setOutline(outline);
 		setFill(fill);
+		setShapeFilled(true);
+	}
+	
+	public ShapeInfo(ShapeType type, double width, double Height, Coord coord, Color outline) {
+		setType(type);
+		setWidth(width);
+		setHeight(Height);
+		setCoord(coord);
+		setOutline(outline);
+		setFill(Color.WHITE);
+		setShapeFilled(false);
 	}
 
 	/**
@@ -112,5 +124,19 @@ public class ShapeInfo {
 	 */
 	public void setFill(Color fill) {
 		this.fill = fill;
+	}
+
+	/**
+	 * @return the fillShape
+	 */
+	public boolean isShapeFilled() {
+		return fillShape;
+	}
+
+	/**
+	 * @param fillShape the fillShape to set
+	 */
+	public void setShapeFilled(boolean fillShape) {
+		this.fillShape = fillShape;
 	}
 }
